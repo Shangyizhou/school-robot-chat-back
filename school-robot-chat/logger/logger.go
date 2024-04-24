@@ -1,12 +1,12 @@
 package logger
 
 import (
-	"bluebell_backend/settings"
 	"net"
 	"net/http"
 	"net/http/httputil"
 	"os"
 	"runtime/debug"
+	"school-robot-chat/settings"
 	"strings"
 	"time"
 

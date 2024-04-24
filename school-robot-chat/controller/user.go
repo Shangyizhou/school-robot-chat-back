@@ -3,27 +3,26 @@ package controller
 import (
 	"errors"
 	"fmt"
-	"net/http"
-	"school-robot-chat/dao/mysql"
-	"school-robot-chat/models"
-	"school-robot-chat/pkg/jwt"
-	"strings"
-
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
+	"net/http"
+	"school-robot-chat/dao/mysql"
+	"school-robot-chat/model"
+	"school-robot-chat/pkg/jwt"
+	"strings"
 )
 
 func SignUpHandler(c *gin.Context) {
 	// 1.获取请求参数 2.校验数据有效性
-	var fo models.RegisterForm
-	if err := c.ShouldBindJSON(&fo); err != nil {
+	var form model.RegisterForm
+	if err := c.ShouldBindJSON(&form); err != nil {
 		ResponseErrorWithMsg(c, CodeInvalidParams, err.Error())
 		return
 	}
 	// 3.注册用户
-	err := mysql.Register(&models.User{
-		UserName: fo.UserName,
-		Password: fo.Password,
+	err := mysql.Register(&model.User{
+		UserName: form.UserName,
+		Password: form.Password,
 	})
 	if errors.Is(err, mysql.ErrorUserExit) {
 		ResponseError(c, CodeUserExist)
@@ -37,8 +36,9 @@ func SignUpHandler(c *gin.Context) {
 	ResponseSuccess(c, nil)
 }
 
+// ShouldBindJSON直接将JSON字符串映射到User
 func LoginHandler(c *gin.Context) {
-	var u models.User
+	var u model.User
 	if err := c.ShouldBindJSON(&u); err != nil {
 		zap.L().Error("invalid params", zap.Error(err))
 		ResponseErrorWithMsg(c, CodeInvalidParams, err.Error())
@@ -50,12 +50,12 @@ func LoginHandler(c *gin.Context) {
 		return
 	}
 	// 生成Token
-	aToken, rToken, _ := jwt.GenToken(u.UserID)
+	aToken, rToken, _ := jwt.GenToken(u.ID)
 	ResponseSuccess(c, gin.H{
-		"accessToken":  aToken,
-		"refreshToken": rToken,
-		"userID":       u.UserID,
-		"username":     u.UserName,
+		"access_token":  aToken,
+		"refresh_token": rToken,
+		"user_id":       u.ID,
+		"user_name":     u.UserName,
 	})
 }
 
