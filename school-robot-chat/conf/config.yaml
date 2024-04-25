@@ -13,7 +13,7 @@ mysql:
   port: 3306
   user: root
   password: 123456jkld
-  db: school_robot_chat
+  dao: school_robot_chat
   max_open_conns: 100
   max_idle_conns: 20
 

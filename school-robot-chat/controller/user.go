@@ -6,25 +6,29 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"net/http"
-	"school-robot-chat/dao/mysql"
+	"school-robot-chat/logic"
 	"school-robot-chat/model"
 	"school-robot-chat/pkg/jwt"
 	"strings"
 )
 
 func SignUpHandler(c *gin.Context) {
-	// 1.获取请求参数 2.校验数据有效性
+	// 1.获取请求参数
+	// 2.校验数据有效性
 	var form model.RegisterForm
 	if err := c.ShouldBindJSON(&form); err != nil {
+		zap.L().Error("ShouldBindJSON mysql.Register() failed", zap.Error(err))
 		ResponseErrorWithMsg(c, CodeInvalidParams, err.Error())
 		return
 	}
+	zap.L().Info("RegisterForm detail", zap.Any("form", form))
 	// 3.注册用户
-	err := mysql.Register(&model.User{
+	err := logic.Register(&model.User{
 		UserName: form.UserName,
 		Password: form.Password,
 	})
-	if errors.Is(err, mysql.ErrorUserExit) {
+	if errors.Is(err, logic.ErrorUserExit) {
+		zap.L().Error("mysql.Register() failed, user exist", zap.Error(err))
 		ResponseError(c, CodeUserExist)
 		return
 	}
@@ -44,7 +48,8 @@ func LoginHandler(c *gin.Context) {
 		ResponseErrorWithMsg(c, CodeInvalidParams, err.Error())
 		return
 	}
-	if err := mysql.Login(&u); err != nil {
+	zap.L().Info("LoginHandler ShouldBindJSON", zap.Any("user", u))
+	if err := logic.Login(&u); err != nil {
 		zap.L().Error("mysql.Login(&u) failed", zap.Error(err))
 		ResponseError(c, CodeInvalidPassword)
 		return

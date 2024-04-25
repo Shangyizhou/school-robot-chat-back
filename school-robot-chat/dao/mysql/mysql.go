@@ -1,9 +1,11 @@
 package mysql
 
 import (
+	"errors"
 	"fmt"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
+	"school-robot-chat/model"
 	"school-robot-chat/settings"
 )
 
@@ -17,9 +19,16 @@ func Init(cfg *settings.MySQLConfig) (err error) {
 	if err != nil {
 		return err
 	}
-	//dao.SetMaxOpenConns(cfg.MaxOpenConns)
-	//dao.SetMaxIdleConns(cfg.MaxIdleConns)
-	return err
+
+	err = db.AutoMigrate(&model.User{}, &model.Session{}).Error
+	if err != nil {
+		return errors.New("Unable autoMigrateDB - " + err.Error())
+	}
+
+	sqlDB := db.DB()
+	sqlDB.SetMaxOpenConns(cfg.MaxOpenConns)
+	sqlDB.SetMaxIdleConns(cfg.MaxIdleConns)
+	return nil
 }
 
 // Close 关闭MySQL连接

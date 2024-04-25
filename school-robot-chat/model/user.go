@@ -18,19 +18,19 @@ import (
 //2. 对于一些默认值为零值的字段，如果希望它们在 JSON 中出现，即使值为默认值，也不要使用 `omitempty`。
 
 type User struct {
-	ID            uint64 `gorm:"not null" gorm:"primary_key" json:"user_id,omitempty"`
-	state         string `gorm:"not null" json:"state,omitempty" default:"offline"`
-	UserName      string `gorm:"not null" json:"user_name,omitempty" default:""`
-	Password      string `gorm:"not null" json:"password,omitempty" default:""`
-	Photo         string `gorm:"not null" json:"photo,omitempty" default:""`
-	SchoolName    string `gorm:"not null" json:"school_name,omitempty" default:""`
-	ClassName     string `gorm:"not null" json:"class_name,omitempty" default:""`
-	Sex           bool   `gorm:"not null" json:"sex,omitempty" default:"true"`
-	Desc          string `gorm:"not null" json:"desc,omitempty" default:""`
-	Age           int    `gorm:"not null" json:"age,omitempty" default:"0"`
-	Birthday      string `gorm:"not null" json:"birthday,omitempty" default:""`
-	Constellation string `gorm:"not null" json:"constellation,omitempty" default:""`
-	Hobby         string `gorm:"not null" json:"hobby,omitempty" default:""`
+	ID            uint64 `gorm:"not null" gorm:"primary_key" json:"user_id,omitempty" db:"user_id"`
+	state         string `gorm:"not null" json:"state,omitempty" default:"offline" db:"state"`
+	UserName      string `gorm:"user_name" json:"user_name,omitempty" default:"" db:"user_name"`
+	Password      string `gorm:"not null" json:"password,omitempty" default:"" db:"password"`
+	Photo         string `gorm:"not null" json:"photo,omitempty" default:"" db:"photo"`
+	SchoolName    string `gorm:"not null" json:"school_name,omitempty" default:"" db:"school_name"`
+	ClassName     string `gorm:"not null" json:"class_name,omitempty" default:"" db:"class_name"`
+	Sex           bool   `gorm:"not null" json:"sex,omitempty" default:"true" db:"sex"`
+	Desc          string `gorm:"not null" json:"desc,omitempty" default:"" db:"desc"`
+	Age           int    `gorm:"not null" json:"age,omitempty" default:"0" db:"age"`
+	Birthday      string `gorm:"not null" json:"birthday,omitempty" default:"" db:"birthday"`
+	Constellation string `gorm:"not null" json:"constellation,omitempty" default:"" db:"constellation"`
+	Hobby         string `gorm:"not null" json:"hobby,omitempty" default:"" db:"hobby"`
 }
 
 // 将 User 的表名设置为 `user`
@@ -65,15 +65,16 @@ func (user *User) UnmarshalJSON(data []byte) (err error) {
 }
 
 // 注册相关
+// 好像postman只可以以raw形式接受
 type RegisterForm struct {
-	UserName        string `json:"user_name"`
-	Password        string `json:"password"`
-	ConfirmPassword string `json:"confirm_password"`
+	UserName        string `form:"user_name" json:"user_name" binding:"required"`
+	Password        string `form:"password" json:"password" binding:"required"`
+	ConfirmPassword string `form:"confirm_password" json:"confirm_password" binding:"required"`
 }
 
 func (r *RegisterForm) UnmarshalJSON(data []byte) (err error) {
 	required := struct {
-		UserName        string `json:"username"`
+		UserName        string `json:"user_name"`
 		Password        string `json:"password"`
 		ConfirmPassword string `json:"confirm_password"`
 	}{}

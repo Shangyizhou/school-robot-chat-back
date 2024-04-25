@@ -1,0 +1,65 @@
+{"level":"INFO","time":"2024-04-25T11:25:01.413+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-04-25T11:34:54.583+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-04-25T11:36:01.133+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-04-25T11:37:12.394+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-04-25T11:39:23.776+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"ERROR","time":"2024-04-25T11:39:27.739+0800","caller":"controller/user.go:19","msg":"mysql.Register() failed","error":"invalid character '-' in numeric literal"}
+{"level":"INFO","time":"2024-04-25T11:40:53.985+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"ERROR","time":"2024-04-25T11:41:00.566+0800","caller":"controller/user.go:19","msg":"ShouldBindJSON mysql.Register() failed","error":"invalid character '-' in numeric literal"}
+{"level":"INFO","time":"2024-04-25T11:41:36.823+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"ERROR","time":"2024-04-25T11:41:40.712+0800","caller":"controller/user.go:19","msg":"ShouldBindJSON mysql.Register() failed","error":"invalid character '-' in numeric literal"}
+{"level":"ERROR","time":"2024-04-25T11:43:16.337+0800","caller":"controller/user.go:19","msg":"ShouldBindJSON mysql.Register() failed","error":"invalid character '-' in numeric literal"}
+{"level":"ERROR","time":"2024-04-25T11:44:30.864+0800","caller":"controller/user.go:29","msg":"mysql.Register() failed, user exist","error":"用户已存在"}
+{"level":"INFO","time":"2024-04-25T14:21:54.916+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"ERROR","time":"2024-04-25T14:22:05.310+0800","caller":"controller/user.go:29","msg":"mysql.Register() failed, user exist","error":"用户已存在"}
+{"level":"INFO","time":"2024-04-25T14:22:46.232+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-04-25T14:23:31.380+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"ERROR","time":"2024-04-25T14:23:39.022+0800","caller":"controller/user.go:29","msg":"mysql.Register() failed, user exist","error":"用户已存在"}
+{"level":"INFO","time":"2024-04-25T14:44:58.868+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-04-25T15:02:53.234+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-04-25T15:02:57.886+0800","caller":"controller/user.go:24","msg":"RegisterForm detail","form":{"user_name":"","password":"","confirm_password":""}}
+{"level":"INFO","time":"2024-04-25T15:05:47.442+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-04-25T15:08:55.143+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-04-25T15:08:59.687+0800","caller":"controller/user.go:24","msg":"RegisterForm detail","form":{"user_name":"","password":"","confirm_password":""}}
+{"level":"INFO","time":"2024-04-25T15:09:14.103+0800","caller":"controller/user.go:24","msg":"RegisterForm detail","form":{"user_name":"","password":"","confirm_password":""}}
+{"level":"INFO","time":"2024-04-25T15:09:26.297+0800","caller":"controller/user.go:24","msg":"RegisterForm detail","form":{"user_name":"","password":"","confirm_password":""}}
+{"level":"INFO","time":"2024-04-25T15:14:29.507+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"ERROR","time":"2024-04-25T15:14:32.869+0800","caller":"controller/user.go:20","msg":"ShouldBindJSON mysql.Register() failed","error":"invalid character '-' in numeric literal"}
+{"level":"INFO","time":"2024-04-25T15:15:11.899+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"ERROR","time":"2024-04-25T15:15:15.952+0800","caller":"controller/user.go:20","msg":"ShouldBindJSON mysql.Register() failed","error":"invalid character '-' in numeric literal"}
+{"level":"INFO","time":"2024-04-25T15:15:33.854+0800","caller":"controller/user.go:24","msg":"RegisterForm detail","form":{"user_name":"尚益州","password":"123456","confirm_password":"123456"}}
+{"level":"ERROR","time":"2024-04-25T15:15:42.505+0800","caller":"controller/user.go:20","msg":"ShouldBindJSON mysql.Register() failed","error":"invalid character '-' in numeric literal"}
+{"level":"INFO","time":"2024-04-25T15:18:40.089+0800","caller":"controller/user.go:24","msg":"RegisterForm detail","form":{"user_name":"尚益州","password":"123456","confirm_password":"123456"}}
+{"level":"INFO","time":"2024-04-25T15:18:41.966+0800","caller":"controller/user.go:24","msg":"RegisterForm detail","form":{"user_name":"尚益州","password":"123456","confirm_password":"123456"}}
+{"level":"INFO","time":"2024-04-25T15:33:51.359+0800","caller":"controller/user.go:24","msg":"RegisterForm detail","form":{"user_name":"尚益州","password":"123456","confirm_password":"123456"}}
+{"level":"INFO","time":"2024-04-25T15:34:14.523+0800","caller":"controller/user.go:24","msg":"RegisterForm detail","form":{"user_name":"张三","password":"123456","confirm_password":"123456"}}
+{"level":"INFO","time":"2024-04-25T15:34:18.792+0800","caller":"controller/user.go:24","msg":"RegisterForm detail","form":{"user_name":"张三","password":"123456","confirm_password":"123456"}}
+{"level":"INFO","time":"2024-04-25T15:35:30.574+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-04-25T15:35:34.639+0800","caller":"controller/user.go:24","msg":"RegisterForm detail","form":{"user_name":"张三","password":"123456","confirm_password":"123456"}}
+{"level":"INFO","time":"2024-04-25T15:38:45.964+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-04-25T15:38:51.640+0800","caller":"controller/user.go:24","msg":"RegisterForm detail","form":{"user_name":"张三","password":"123456","confirm_password":"123456"}}
+{"level":"INFO","time":"2024-04-25T15:38:51.656+0800","caller":"logic/user.go:36","msg":"user is exist"}
+{"level":"ERROR","time":"2024-04-25T15:38:51.657+0800","caller":"controller/user.go:31","msg":"mysql.Register() failed, user exist","error":"用户已存在"}
+{"level":"ERROR","time":"2024-04-25T15:42:52.420+0800","caller":"controller/user.go:47","msg":"invalid params","error":"invalid character '-' in numeric literal"}
+{"level":"ERROR","time":"2024-04-25T15:43:16.864+0800","caller":"controller/user.go:47","msg":"invalid params","error":"invalid character '}' looking for beginning of object key string"}
+{"level":"ERROR","time":"2024-04-25T15:43:20.871+0800","caller":"controller/user.go:52","msg":"mysql.Login(&u) failed","error":"密码错误"}
+{"level":"ERROR","time":"2024-04-25T15:43:45.030+0800","caller":"controller/user.go:52","msg":"mysql.Login(&u) failed","error":"密码错误"}
+{"level":"INFO","time":"2024-04-25T15:45:20.320+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-04-25T15:45:23.800+0800","caller":"controller/user.go:51","msg":"LoginHandler ShouldBindJSON","user":{"user_name":"尚益州","password":"123456"}}
+{"level":"INFO","time":"2024-04-25T15:45:23.803+0800","caller":"logic/user.go:66","msg":"passwd error","passwd":"2bbc038cdf6b7d0bf51229911edec4f2"}
+{"level":"ERROR","time":"2024-04-25T15:45:23.803+0800","caller":"controller/user.go:53","msg":"mysql.Login(&u) failed","error":"密码错误"}
+{"level":"INFO","time":"2024-04-25T15:46:27.118+0800","caller":"controller/user.go:24","msg":"RegisterForm detail","form":{"user_name":"张三","password":"123456","confirm_password":"123456"}}
+{"level":"INFO","time":"2024-04-25T15:46:36.598+0800","caller":"controller/user.go:51","msg":"LoginHandler ShouldBindJSON","user":{"user_name":"尚益州","password":"123456"}}
+{"level":"INFO","time":"2024-04-25T15:46:36.599+0800","caller":"logic/user.go:60","msg":"no exist user"}
+{"level":"ERROR","time":"2024-04-25T15:46:36.599+0800","caller":"controller/user.go:53","msg":"mysql.Login(&u) failed","error":"用户不已存在"}
+{"level":"INFO","time":"2024-04-25T15:46:50.899+0800","caller":"controller/user.go:51","msg":"LoginHandler ShouldBindJSON","user":{"user_name":"张三","password":"123456"}}
+{"level":"INFO","time":"2024-04-25T15:46:50.914+0800","caller":"logic/user.go:66","msg":"passwd error","passwd":"2bbc038cdf6b7d0bf51229911edec4f2"}
+{"level":"ERROR","time":"2024-04-25T15:46:50.935+0800","caller":"controller/user.go:53","msg":"mysql.Login(&u) failed","error":"密码错误"}
+{"level":"INFO","time":"2024-04-25T15:48:10.205+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-04-25T15:48:14.088+0800","caller":"controller/user.go:51","msg":"LoginHandler ShouldBindJSON","user":{"user_name":"张三","password":"123456"}}
+{"level":"INFO","time":"2024-04-25T15:51:56.754+0800","caller":"controller/user.go:51","msg":"LoginHandler ShouldBindJSON","user":{"user_name":"张三","password":"123456"}}
+{"level":"INFO","time":"2024-04-25T15:53:32.366+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-04-25T15:53:38.730+0800","caller":"controller/user.go:51","msg":"LoginHandler ShouldBindJSON","user":{"user_name":"张三","password":"123456"}}
+{"level":"INFO","time":"2024-04-25T15:58:44.609+0800","caller":"controller/user.go:51","msg":"LoginHandler ShouldBindJSON","user":{"user_name":"张三","password":"123456"}}
+{"level":"INFO","time":"2024-04-25T15:59:11.062+0800","caller":"controller/user.go:51","msg":"LoginHandler ShouldBindJSON","user":{"user_name":"张三","password":"123456"}}
+{"level":"INFO","time":"2024-04-25T16:01:16.947+0800","caller":"controller/user.go:51","msg":"LoginHandler ShouldBindJSON","user":{"user_name":"张三","password":"123456"}}

@@ -1,87 +1,59 @@
 package mysql
 
 import (
-	"crypto/md5"
-	"database/sql"
-	"encoding/hex"
 	"errors"
 	"github.com/jinzhu/gorm"
 	"school-robot-chat/model"
-	"school-robot-chat/pkg/snowflake"
 )
 
-func encryptPassword(data []byte) (result string) {
-	h := md5.New()
-	h.Write([]byte(secret))
-	h.Write(data)
-	return hex.EncodeToString(h.Sum(nil))
-}
-
-func Register(user *model.User) (err error) {
-	sqlStr := "select count(user_id) from user where username = ?"
-	var count int64
-	err = db.Get(&count, sqlStr, user.UserName)
-	if err != nil && err != sql.ErrNoRows {
-		return err
-	}
-	if count > 0 {
-		// 用户已存在
-		return ErrorUserExit
-	}
-	// 生成user_id
-	userID, err := snowflake.GetID()
-	if err != nil {
-		return ErrorGenIDFailed
-	}
-	// 生成加密密码
-	password := encryptPassword([]byte(user.Password))
-	// 把用户插入数据库
-	sqlStr = "insert into user(user_id, username, password) values (?,?,?)"
-	_, err = db.Exec(sqlStr, userID, user.UserName, password)
-	return
-}
-
-func Login(user *model.User) (err error) {
-	//sqlStr := "select user_id, username, password from user where username = ?"
-	//err = db.Get(user, sqlStr, user.UserName)
-	//if err != nil && err != sql.ErrNoRows {
-	//	// 查询数据库出错
-	//	return
-	//}
-	//if err == sql.ErrNoRows {
-	//	// 用户不存在
-	//	return ErrorUserNotExit
-	//}
-	//// 生成加密密码与查询到的密码比较
-	//password := encryptPassword([]byte(originPassword))
-	//if user.Password != password {
-	//	return ErrorPasswordWrong
-	//}
-	//return
-	originPassword := user.Password // 记录一下原始密码
-	err = db.Where("username =?", user.UserName).First(user).Error
-	if err != nil {
-		// 查询数据库出错
-		return err
-	}
-
-	if err == sql.ErrNoRows {
-		// 用户不存在
-		return ErrorUserNotExit
-	}
-
-	// 生成加密密码与查询到的密码比较
-	password := encryptPassword([]byte(originPassword))
-	if user.Password != password {
-		return ErrorPasswordWrong
-	}
-	return nil
-}
-
 func GetUserByID(id string) (user model.User, err error) {
-	err = db.Where("id = ?", id).First(&user).Error
+	err = db.Where("user_id = ?", id).First(&user).Error
 	if err == gorm.ErrRecordNotFound {
 		return model.User{}, errors.New("user not found")
 	}
 	return user, err
+}
+
+func GetUserByName(name string) (user model.User, err error) {
+	err = db.Where("user_name =?", name).First(&user).Error
+	//if err == gorm.ErrRecordNotFound {
+	//	return model.User{}, errors.New("user not found")
+	//}
+	return user, err
+}
+
+// 插入一条新的User记录，外部传入指针
+func InsertUser(user *model.User) (err error) {
+	err = db.Create(user).Error
+	if err != nil {
+		panic(errors.New("failed to insert data"))
+	}
+	return nil
+}
+
+// Save()默认会更新所有字段，外部传入指针
+func UpdateUser(user *model.User) (err error) {
+	err = db.Save(user).Error
+	if err != nil {
+		panic(errors.New("failed to save data"))
+	}
+	return nil
+}
+
+// 设置User为登录状态，外部传入指针
+func SetUserOnline(user *model.User) (err error) {
+	db.Model(user).Update("state", "online")
+	if err != nil {
+		panic(errors.New("failed to set user online"))
+	}
+	return nil
+}
+
+// 查询所有登录状态为 online 的 user 列表
+func GetOnlineUserList() (users []model.User, err error) {
+	err = db.Where("status =?", "online").Find(&users).Error
+	if err != nil {
+		panic(errors.New("failed to get users online"))
+	}
+	return users, nil
 }
